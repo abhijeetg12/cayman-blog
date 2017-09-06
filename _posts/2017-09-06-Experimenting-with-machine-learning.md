@@ -1,6 +1,5 @@
 
 ---
-layout: post
 title: " Experimenting with the CandC dataset"
 tagline: "Trying out various machine learning algorithm on the Communities and Crime (CandC) Data Set from the UCI repository "
 categories: junk
