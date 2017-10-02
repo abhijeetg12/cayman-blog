@@ -8,7 +8,7 @@ author: "Bart Simpson"
 meta: "Springfield"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.
+This is going to be a really basic introduction to statistical Machine learning, where I have experimeneted with multiple machine learning techniques, and have noted some peculiar conclusions about the results. These results will help you get a better insight into the techniques, and their limitations. 
 
 ## Synthetic data creation (h2)
 
@@ -17,7 +17,16 @@ Therefore it is really helpful if you can create data on your own, and learn how
 i have generated 2 classes with 20 features each. Each class is given by a multivariate Gaussian distribution, with both
 classes sharing the same covariance matrix. Ensuring that the covariance matrix is not spherical, i.e., that it is not a diagonal matrix, with all the diagonal entries being the same. there are 2000 examples for each class. the centroids for these classes has been chosen as [0,0,0,...0], [1,1,1,...,1] respectively. 
 enough so that there is some overlap in the classes.
-We are going to 
+
+Code for the dataset creation
+```python
+meanA=np.zeros(20)
+#the data set has a mean at [0,0,0,...,0]
+meanB=2*np.ones(20)#the data set has a mean at [2,2,2...,2]
+cov=np.random.rand(20,20)
+A=np.random.multivariate_normal(meanA,cov,length).T
+B=np.random.multivariate_normal(meanB,cov,length).T
+```
 
 ## Another great heading (h2)
 
