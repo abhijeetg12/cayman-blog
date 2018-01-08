@@ -1,9 +1,9 @@
 title: A blog of small things
 description: Hi there, this is a blog by Abhijeet Ghawade, an undergraduate student of IIT Madras. 
-show_downloads: true
+show_downloads: false
 
 baseurl: "/cayman-blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-url: "https://lorepirri.github.io" # change this to the base hostname & protocol for your site
+url: "https://abhijeetg12.github.io/cayman-blog/" # change this to the base hostname & protocol for your site
 
 google_analytics:
 # cayman-blog date format
@@ -14,14 +14,14 @@ cayman-blog:
 theme: # leave it empty
 
 # social
-author: "Lore Pirri"
+author: "Abhijeet Ghawadet"
 image: /thumbnail-jumbo.png
 twitter:
-  username: lorepirri
+  username: @abhijeetg1997
 #  site:
 facebook:
   #publisher: 1592372034171500
-  #profile_id: 1809805629
-  app_id: 1798910940422432 # cayman-blog
-  #authors: lorepirri
+  profile_id: 100009262104229
+  #app_id: 1798910940422432 # cayman-blog
+  #authors: Abhijeet Ghawade
 #  admins:
