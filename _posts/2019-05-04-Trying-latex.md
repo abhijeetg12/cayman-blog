@@ -24,6 +24,15 @@
 <h2 class="author">Abhijeet Ghawade</h2>
 <h3 class="date">March 2019</h3>
 </div>
+  ```html
+<html>
+  <head>
+  </head>
+  <body>
+    <p>Hello, World!</p>
+  </body>
+</html>
+```
 <p>Jean Marie Linhart gives guidance for incorporating writing and communication. <span class="math inline">\(\frac{1}{2}\)</span></p>
 </body>
 </html>
