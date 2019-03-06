@@ -44,6 +44,7 @@ though this value is prone to change with change in datasets. We can observe tha
 Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum.
 
 Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.
+<p>Jean Marie Linhart gives guidance for the equations here <span class="math inline">\(\epsilon=\gamma \frac{1}{2}\)</span></p>
 
 ### Some great subheading (h3)
 
