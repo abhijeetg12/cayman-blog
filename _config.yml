@@ -16,8 +16,8 @@ theme: # leave it empty
 # social
 author: "Abhijeet Ghawadet"
 image: /thumbnail-jumbo.png
-twitter:
-  username: @abhijeetg1997
+#twitter:
+#  username: @abhijeetg1997
 #  site:
 facebook:
   #publisher: 1592372034171500
