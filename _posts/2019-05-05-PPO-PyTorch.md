@@ -1,14 +1,15 @@
 
 ---
-title: " Experimenting with the CandC dataset"
-tagline: "Trying out various machine learning algorithm on the Communities and Crime (CandC) Data Set from the UCI repository "
+title: " Proximal Policy Optimization"
+tagline: "Implementing PPO paper on Atari-gym environments, using PyTorch"
 categories: junk
 image: /thumbnail-mobile.png
-author: "Bart Simpson"
+author: "Abhijeet Ghawade"
 meta: "Springfield"
 ---
-
-This is going to be a really basic introduction to statistical Machine learning, where I have experimeneted with multiple machine learning techniques, and have noted some peculiar conclusions about the results. These results will help you get a better insight into the techniques, and their limitations. 
+This blog will help you in undersatding the maths behind PPO, and also, the coding which is required to efficiently implement PPO in pyton using PyTorch. 
+The best way to learn something is to implement it, and you learn a lot more things on the way doing it, I have learned quite a lot of things implementing this paper. 
+\mathcal{W}(A,f) = (T,\bar{f})
 
 ## Synthetic data creation
 
