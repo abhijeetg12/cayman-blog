@@ -119,6 +119,6 @@ The size of frame in 84*84, and there are 4 such frames we will obtain at one ti
 
         return torch.tensor(obs, dtype=torch.float32,device=device)/255</code></pre>
 <p><img src="Network" alt="image" /></p>
-<img src="cayman-blog/_posts/image.png" alt="hi" class="inline"/>
+<img src="cayman-blog/_posts/Network.png" alt="hi" class="inline"/>
 </body>
 </html>
