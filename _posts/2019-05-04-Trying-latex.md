@@ -354,6 +354,9 @@ J(\pi^{new})- J(\pi^{old}) &amp;= J(\pi^{new})-E_{\tau \sim \pi^{new}}[V^{\pi_{o
     @staticmethod
     def _normalize(adv):
         return (adv-adv.mean())/(adv.std()+1e-8)</code></pre>
+        
+
+<p><img src="https://github.com/abhijeetg12/PPO-PyTorch/blob/master/breakout.png?raw=true" alt="image" /><br />
 <h1 id="record-video">Record Video</h1>
 <p>Once the model has traied fairly well, we can use the function record-video to record the video of the game being played by the agent.<br />
 It does the job of sampling trajectories for multiple workers, and then, it stores the images in a particular specified folder with a certain pattern.<br />
