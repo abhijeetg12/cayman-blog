@@ -375,13 +375,13 @@ It does the job of sampling trajectories for multiple workers, and then, it stor
                 cv2.imwrite(&#39;img_break/&#39;+name, img)</code></pre>
 <p>We can use the command avconv to combine these images to create a video. have a look at the avconv documentation for more details.</p>
 <pre><code>avconv -f image2 -i image1b%d.png -r 76 -s 800x600 video1.avi</code></pre>
-
-<video width="320" height="240" controls>
-  <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/Breakout-combined.mp4?raw=true" type="video/mp4">
   
 <video width="320" height="240" controls>
   <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/pong-combined.mp4?raw=true" type="video/mp4">
 </video>
+<video width="320" height="240" controls>
+  <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/Breakout-combined.mp4?raw=true" type="video/mp4">
+
 
 </body>
 </html>
