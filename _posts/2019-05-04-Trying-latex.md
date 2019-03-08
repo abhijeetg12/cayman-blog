@@ -378,11 +378,13 @@ It does the job of sampling trajectories for multiple workers, and then, it stor
 
 <video width="320" height="240" controls>
   <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/Breakout-combined.mp4?raw=true" type="video/mp4">
- 
+
+<p>
   
 <video width="320" height="240" controls>
   <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/pong-combined.mp4?raw=true" type="video/mp4">
 </video>
+</p>
 </body>
 </html>
 
