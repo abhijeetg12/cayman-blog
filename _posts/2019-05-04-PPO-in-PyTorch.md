@@ -1,6 +1,6 @@
 --- 
 layout: post 
-title: Trying Latex
+title:PPO-in-PyTorch
 categories: [Catagory 1, Catagory 2] 
 tags: [Tag 1, Tag 2] 
 comments: true 
