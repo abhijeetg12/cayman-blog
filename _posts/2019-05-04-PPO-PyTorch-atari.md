@@ -1,10 +1,4 @@
---- 
-layout: post 
-title:PPO-in-PyTorch
-categories: [Catagory 1, Catagory 2] 
-tags: [Tag 1, Tag 2] 
-comments: true 
----
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
