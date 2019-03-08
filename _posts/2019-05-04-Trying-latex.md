@@ -21,7 +21,7 @@ comments: true
 <h3 class="date">March 2019</h3>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p>This is a detailed explaination for implementing PPO (Proximal Policy Optimization ) paper, we will go through the maths and the code simultaneously to understand what is the general method to implement papers in Deep-RL specifically.<br />
+<p>This is a detailed explaination for implementing PPO (Proximal Policy Optimization ) paper, we will go through the maths and the code simultaneously. I hope this helps you understand the paper, and gives a general idea about implementing papers in Depp-RL.<br />
 I have used PyTorch for implementing the Neural Network.<br />
 This is hardcoded for atari gym environments, but with a few changes, you can use it for any other environment required. I will follow a causal approach for the code, I hope which will be best for understanding the implementation best.We will understand the intuition for the paper as we go along.<br />
 We will run the code as the Main program, or else, it can be used as a Module to be imported.</p>
@@ -116,7 +116,7 @@ The size of frame in 84*84, and there are 4 such frames we will obtain at one ti
         obs=np.swapaxes(obs, 3,2)
 
         return torch.tensor(obs, dtype=torch.float32,device=device)/255</code></pre>
-<p><img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/Network.png" alt="image" /><br />
+<p><img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/Network.png?raw=true" alt="image" /><br />
 The first layer is the input, which consists of the raw visual feed of the game, and 4 such frames are stacked on each other.<br />
 The next one is a concolutional layer with kernel size=8 and the stride of 4, which reduces the dimension of the image to 20*20. There are 32 such filters.<br />
 The next convolutional layer reduces the filter size to 9*9, there are 64 such channels, the next layer reduces the size to 7*7 with the same number of channels.<br />
