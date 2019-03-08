@@ -5,8 +5,6 @@ categories: [Catagory 1, Catagory 2]
 tags: [Tag 1, Tag 2] 
 comments: true 
 ---
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -118,7 +116,7 @@ The size of frame in 84*84, and there are 4 such frames we will obtain at one ti
         obs=np.swapaxes(obs, 3,2)
 
         return torch.tensor(obs, dtype=torch.float32,device=device)/255</code></pre>
-<p><img src="Network" alt="image" /><br />
+<p><img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/Network.png" alt="image" /><br />
 The first layer is the input, which consists of the raw visual feed of the game, and 4 such frames are stacked on each other.<br />
 The next one is a concolutional layer with kernel size=8 and the stride of 4, which reduces the dimension of the image to 20*20. There are 32 such filters.<br />
 The next convolutional layer reduces the filter size to 9*9, there are 64 such channels, the next layer reduces the size to 7*7 with the same number of channels.<br />
