@@ -384,7 +384,7 @@ It does the job of sampling trajectories for multiple workers, and then, it stor
 
 
 
-</p><img src="https://github.com/abhijeetg12/PPO-PyTorch/blob/master/breakout.png?raw=true" alt="image" /><br />
+<p><img src="https://github.com/abhijeetg12/PPO-PyTorch/blob/master/breakout.png?raw=true" alt="image" /><br />
 </p>
 </html>
 
