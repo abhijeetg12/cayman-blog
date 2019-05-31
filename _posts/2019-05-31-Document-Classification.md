@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="header">
-<h1 class="title">Implementing PPO in Pytorch</h1>
+<h1 class="title">Multi-Label Document Classification using Neural Networks</h1>
 <h2 class="author">Abhijeet Ghawade</h2>
 <h3 class="date">March 2019</h3>
 </div>
