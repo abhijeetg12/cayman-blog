@@ -14,7 +14,7 @@
 <h3 class="date">March 2019</h3>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p> Document classification is an important problem, and categorizing helps us be more organized</p>
+<p> Document classification is an important problem in classification, the task is to classify a document into one or more categories. Text documents classification is a classical problem in Natural langauge processing. We will be working with content based classification in this post. There are multiple application to document classification, some of them being spam-filtering, sentiment analysis, readability assessment. </p>
   
 <h1 id="Dataset">Dataset</h1>
 <p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br />
