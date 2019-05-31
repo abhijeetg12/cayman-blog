@@ -17,7 +17,9 @@
 <p> Document classification is an important problem, and categorizing helps us be more organized</p>
   
 <h1 id="Dataset">Dataset</h1>
-<p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br /></p>
+<p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br />
+Reuters is a multi-class multi-label dataset, this means there are multiple classes, and each document can lie in any of these categories making this a multi-label problem. The dataset has 90 classes, 7769 training documents and 3019 testing documents.<br />  
+</p>
 <pre><code>if __name__ == &quot;__main__&quot;:
     m=Main()
     m.run_training_loop()
