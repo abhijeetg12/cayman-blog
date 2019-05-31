@@ -15,6 +15,9 @@
 </div>
 <h1 id="introduction">Introduction</h1>
 <p> Document classification is an important problem, and categorizing helps us be more organized</p>
+  
+<h1 id="Dataset">Dataset</h1>
+<p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br /></p>
 <pre><code>if __name__ == &quot;__main__&quot;:
     m=Main()
     m.run_training_loop()
