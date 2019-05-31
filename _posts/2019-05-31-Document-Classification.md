@@ -17,9 +17,17 @@
 <p> Document classification is an important problem in computer science, the task is to classify a document into one or more categories. Text documents classification is a classical problem in Natural langauge processing. We will be working with content based classification in this post. There are multiple application to document classification, some of them being spam-filtering, sentiment analysis, readability assessment. </p>
   
 <h1 id="Dataset">Dataset</h1>
-<p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br />
-Reuters is a multi-class multi-label dataset, this means there are multiple classes, and each document can lie in any of these categories making this a multi-label problem. The dataset has 90 classes, 7769 training documents and 3019 testing documents.<br />  
-  By far most documents have either one or two labels, but some have up to 15 <br/>
+<p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification.It consists of  <br />
+Reuters ApteMod is a collection of 10,788 documents from the Reuters financial
+newswire service, partitioned into a training set with 7769 documents
+and a test set with 3019 documents.  The total size of the corpus is
+about 43 MB. <br/>
+Reuters is a multi-class multi-label dataset, this means there are multiple classes, and each document can belong to any of these categories making this a multi-label problem. <br/>
+	
+In the ApteMod corpus, each document belongs to one or more
+categories.  There are 90 categories in the corpus.  The average
+number of categories per document is 1.235, and the average number of
+documents per category is about 148, or 1.37% of the corpus.<br/>
 </p>
 
 <h1 id="Tokenization and tf-idf">Data Preporcessing</h1>
