@@ -28,13 +28,21 @@ Reuters is a multi-class multi-label dataset, this means there are multiple clas
   By far most documents have either one or two labels, but some have up to 15 <br/>
 </p>
 
-<h1 id="Building the Neural Network">Building the Neural Network</h1>
-<p>The next part of the process is building a neural network, which will use the numpy arrays we have saved in the previous code. The first part is to load the  <br/>
-</p>
 
 
-<h2 id="code">MLP Code</h2>
+
+<h2 id="code">Data preprocessing</h2>
 <pre><code>
+
+import numpy as np 
+from os.path import expanduser
+from collections import defaultdict
+from nltk.corpus import reuters
+from nltk import word_tokenize
+from nltk.stem.porter import PorterStemmer
+import re
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import TfidfVectorizer
  
 stop_words= stopwords.words('english')
 
@@ -85,6 +93,9 @@ np.save('test_labels.npy', test_docs_labels)
 
 </code></pre>
 
+<h1 id="Building the Neural Network">Building the Neural Network</h1>
+<p>The next part of the process is building a neural network, which will use the numpy arrays we have saved in the previous code. The first part is to load the  <br/>
+</p>
 
 <h2 id="code">MLP Code</h2>
 <pre><code>
