@@ -14,10 +14,7 @@
 <h3 class="date">March 2019</h3>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p>This is a detailed explaination for implementing PPO (Proximal Policy Optimization ) paper, we will go through the maths and the code simultaneously. I hope this helps you understand the paper, and gives a general idea about implementing papers in Depp-RL.<br />
-I have used PyTorch for implementing the Neural Network.<br />
-This is hardcoded for atari gym environments, but with a few changes, you can use it for any other environment required. I will follow a causal approach for the code, I hope which will be best for understanding the implementation best.We will understand the intuition for the paper as we go along.<br />
-We will run the code as the Main program, or else, it can be used as a Module to be imported.</p>
+<p> Document classification is an important problem, and categorizing helps us be more organized</p>
 <pre><code>if __name__ == &quot;__main__&quot;:
     m=Main()
     m.run_training_loop()
