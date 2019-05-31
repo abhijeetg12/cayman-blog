@@ -105,7 +105,15 @@ np.save('test_labels.npy', test_docs_labels)
 </code></pre>
 
 <h1 id="Building the Neural Network">Building the Neural Network</h1>
-<p>The next part of the process is building a neural network, which will use the numpy arrays we have saved in the previous code. The first part is to load the  <br/>
+<p>The next part of the process is building a neural network, which will use the numpy arrays we have saved in the previous code. The first part is to load the train_vectorized, test_vectorized arrays.   <br/>
+Then we define the dimensions for the network, the input dimension is 20682, which is equal to the first dimension of the tfidf vectors and also the dictionary size. <br/>
+H1, H2 are the sizes for the hidden layers, which are both equal to 10,000. The output layers is of size 90, which is equal to the number of classes in the reuters dataset. <br/>
+	
+Next, we build the Neural_Network class using pytorchs nn.module function. it consists of a forward function, which calculates the output after passing it though the 3 layers. The output is returned from the function. <br/>
+We also need to convert all the data in numpy format to torch tensors as this is the only acceptable data type for torch functions. 
+We then use a training loop where we use adam optimizer for training the model for around 200 epochs. 
+You can use any tyoe of loss function, in this code I have used MSE loss for torchs.nn <br/>
+You can save the model for later evaluation. <br/>
 </p>
 
 <h2 id="code">MLP Code</h2>
