@@ -19,6 +19,7 @@
 <h1 id="Dataset">Dataset</h1>
 <p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br />
 Reuters is a multi-class multi-label dataset, this means there are multiple classes, and each document can lie in any of these categories making this a multi-label problem. The dataset has 90 classes, 7769 training documents and 3019 testing documents.<br />  
+  By far most documents have either one or two labels, but some have up to 15 <br/>
 </p>
 <pre><code>if __name__ == &quot;__main__&quot;:
     m=Main()
@@ -304,83 +305,84 @@ J(\pi^{new})- J(\pi^{old}) &amp;= J(\pi^{new})-E_{\tau \sim \pi^{new}}[V^{\pi_{o
 <p><span class="math inline">\(L^{CLIP}(\theta)=\hat{E}_t[min(r_t(\theta), clip(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t)]\)</span><br />
 </p>
 <p>This is the main proposed objective function.</p>
-<h2 id="code">code</h2>
-<pre><code>class Trainer:
-    def __init__(self, model):
-        self.model=model
-        #print(self.model.parameters())
-        self.optimizer=torch.optim.Adam(self.model.parameters(),lr=3e-4)
-
-    def train(self, samples,  learning_rate, clip_range):
-        sampled_obs= samples[&#39;obs&#39;]
-        sampled_action= samples[&#39;actions&#39;]
-        sampled_return= samples[&#39;values&#39;] +samples[&#39;advantages&#39;]
-        sampled_normalized_advantage=Trainer._normalize(samples[&#39;advantages&#39;])
-        sampled_neg_log_pi=samples[&#39;neg_log_pis&#39;]
-        sampled_value=samples[&#39;values&#39;]
-
-        pi,value= self.model(sampled_obs)
-
-        neg_log_pi=-pi.log_prob(sampled_action)
-        ratio=torch.exp(sampled_neg_log_pi-neg_log_pi)
-
-        clipped_ratio=ratio.clamp(min=1.0-clip_range, max=1.0+clip_range)
-        policy_reward=torch.min(ratio*sampled_normalized_advantage,clipped_ratio*sampled_normalized_advantage)
-        policy_reward=policy_reward.mean()
-        entropy_bonus=pi.entropy()
-        entropy_bonus=entropy_bonus.mean()
-
-        clipped_value= sampled_value+(value-sampled_value).clamp(min=-clip_range, max=clip_range)
-        vf_loss=torch.max((value-sampled_return)**2, (clipped_value-sampled_return)**2)
-        vf_loss=0.5* vf_loss.mean()
-        loss=-(policy_reward-0.5*vf_loss+0.01*entropy_bonus) #policy_reward#
-
-        for pg in self.optimizer.param_groups:
-            pg[&#39;lr&#39;]=learning_rate
-        self.optimizer.zero_grad()
-        loss.backward()
-        torch.nn.utils.clip_grad_norm_(self.model.parameters(),max_norm=0.5)
-        self.optimizer.step()
-
-        approx_kl_divergence = .5 * ((neg_log_pi - sampled_neg_log_pi) ** 2).mean()
-        clip_fraction=(abs((ratio-1.0))&gt;clip_range).type(torch.FloatTensor).mean()
-        return [policy_reward, vf_loss, entropy_bonus, approx_kl_divergence, clip_fraction, loss]
-
-    @staticmethod
-    def _normalize(adv):
-        return (adv-adv.mean())/(adv.std()+1e-8)</code></pre>
-        
-
-<p><img src="https://github.com/abhijeetg12/PPO-PyTorch/blob/master/breakout.png?raw=true" alt="image" /><br />
-<h1 id="record-video">Record Video</h1>
-<p>Once the model has traied fairly well, we can use the function record-video to record the video of the game being played by the agent.<br />
-It does the job of sampling trajectories for multiple workers, and then, it stores the images in a particular specified folder with a certain pattern.<br />
-</p>
-<pre><code>    def record_video(self):
-
-        samples, samples_episode_info=self.sample_video()
-        print np.shape(samples[&quot;obs&quot;])
-        n_worker=np.shape(samples[&quot;obs&quot;][0])
-        n_episodes= np.shape(samples[&quot;obs&quot;][1])
-        obs=samples[&quot;obs&quot;]
-        for worker in range(8):     
-            for frame in range(128):
-
-                img=obs[worker,frame,:,:,1] 
-                frame_str=str(frame).zfill(4)
-                name=&#39;image&#39;+str(worker)+&#39;k&#39;+frame_str+&#39;.png&#39; #/home/abhijeet/Desktop/Practise_code/RL
-                print name
-                cv2.imwrite(&#39;img_break/&#39;+name, img)</code></pre>
-<p>We can use the command avconv to combine these images to create a video. have a look at the avconv documentation for more details.</p>
-<pre><code>avconv -f image2 -i image1b%d.png -r 76 -s 800x600 video1.avi</code></pre>
+<h2 id="code">MLP Code</h2>
+<pre><code>
   
-<video width="320" height="240" controls>
-  <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/pong-combined.mp4?raw=true" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/img_break/Breakout-combined.mp4?raw=true" type="video/mp4">
+N=5000
+D_in=20682
+H1=10000
+H2=10000
+D_out=90
 
 
+class Neural_Network(nn.Module): 
+
+	def __init__(self):
+		super(Neural_Network, self).__init__()
+
+		#define and give layers their names
+		self.fc1=nn.Linear(D_in, H1)
+		self.fc2=nn.Linear(H1, H2)
+		self.fc3=nn.Linear(H2, D_out)
+
+	def forward(self,x):
+
+		y1=F.relu(self.fc1(x))
+		y2=F.relu(self.fc2(y1))
+		y3=F.relu(self.fc3(y2))
+
+
+		return y3
+
+net=Neural_Network()
+print(net)
+
+params=list(net.parameters())
+print (len(params))
+
+for i in range(len(params)):
+	print (params[i].size())
+
+
+
+input1 =torch.from_numpy(Trained)
+output1= net(input1)
+
+print (output1.size(), 'output1 size')
+print (type(output1))
+#this is the output of the first forward pass. 
+
+###The train labels will have to be converted to torch tensors, for calculating the RMSE loss. 
+y_train=torch.from_numpy(train_labels).float()
+print (type(y_train.data))
+loss=nn.BCELoss()
+loss_v=loss(output1, y_train)
+print (loss_v)
+
+optimizer=torch.optim.Adam(net.parameters(), lr=1e-4)
+
+
+
+epochs=200
+loss_array=[]
+for i in range(epochs):
+	output1=net(input1)
+	loss_v=loss(output1, y_train)
+	optimizer.zero_grad()
+	loss_v.backward()
+	optimizer.step()
+	loss_array.append(loss_v.item())
+	if (i %10==0):
+		torch.save(net.state_dict(), 'bce_pytorch_model/'+str(i)+'.pth')
+
+
+	print ("Loss for epoch ", i, "is", loss_v.item())
+
+np.save('loss_train_bce.npy', loss_array)
+
+torch.save(net.state_dict(), 'bce_pytorch_model/bce_final.pth')
+</code></pre>
+        
 
 <p><img src="https://github.com/abhijeetg12/PPO-PyTorch/blob/master/breakout.png?raw=true" alt="image" /><br />
 </p>
