@@ -193,9 +193,9 @@ np.save('loss_train_bce.npy', loss_array)
 
 torch.save(net.state_dict(), 'bce_pytorch_model/bce_final.pth')
 </code></pre>
-        
-<!
-<p><img src="https://github.com/abhijeetg12/PPO-PyTorch/blob/master/breakout.png?raw=true" alt="image" /><br />
+
+<h1 id="Building the Neural Network">Building the Neural Network</h1>
+<p>The next part of the process is building a neural network, which
 </p>
->
+  
 </html>
