@@ -226,8 +226,15 @@ We can see that, Pr(A)=Pr(C)=Pr(D)=0.5 and Pr(B)=0.1<br/>
 <hr>
 The <b>macro-average</b> is computed as <b>Pr_macro</b>=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
 The <b>micro-average</b> is computed as <b>Pr_micro</b>=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
-
-
+ <hr>
+ 
+ Let us look at the results achieved by our model, after training for 200 epochs, <br/>
+The micro average quality numbers are as the following ,<br/>
+<hr>
+<b>Precision: 0.5716</b><br/>
+<b>Recall: 0.9675</b><br/>
+<b>F1-Score : 0.7186</b><br/>
+<hr>
 </p>
   
 </html>
