@@ -214,8 +214,8 @@ The results for the classification are as the follows, <br/>
 1) <b>Class C</b>: 1 True positive and 1 False positive <br/>
 1) <b>Class D</b>: 1 True positive and 1 False positive <br/>
 We can see that, Pr(A)=Pr(C)=Pr(D)=0.5 and Pr(B)=0.1<br/>
-The macro-average will be computed as Pr=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
-The micro-average will be computed as Pr=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
+The <b>macro-average<b/> will be computed as <b>Pr_macro</b>=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
+The <b>micro-average<b/> will be computed as <b>Pr_micro</b>=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
 
 
 </p>
