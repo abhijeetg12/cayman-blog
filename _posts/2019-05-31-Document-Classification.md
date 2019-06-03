@@ -14,18 +14,19 @@
 <h3 class="date">March 2019</h3>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p> Document classification is an important problem in computer science, the task is to classify a document into one or more categories. Text documents classification is a classical problem in Natural langauge processing. We will be working with content based classification in this post. There are multiple application to document classification, some of them being spam-filtering, sentiment analysis, readability assessment. </p>
-  
+<p> Document classification is an important problem in computer science, the task is to classify a document into one or more categories. Text documents classification is a classical problem in Natural langauge processing.<br/> We will be working with content based classification in this post. There are multiple application to document classification, some of them being spam-filtering, sentiment analysis, readability assessment. </p>
+  <hr>
 <h1 id="Dataset">Dataset</h1>
-<p> We will be using the <b>Reuters</b> dataset for the scope of this blog, Reuters is a benchmark dataset for document classification.It consists of  <br />
-Reuters ApteMod is a collection of 10,788 documents from the Reuters financial
-newswire service, partitioned into a training set with 7769 documents
-and a test set with 3019 documents.  The total size of the corpus is
+<p> We will be using the <b>Reuters</b> dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br/>
+Reuters ApteMod is a collection of <b>10,788</b> documents from the Reuters financial
+newswire service, partitioned into a <b>training set with 7769 documents</b>
+and a <b>test set with 3019 documents</b>.  The total size of the corpus is
 about 43 MB. <br/>
-Reuters is a multi-class multi-label dataset, this means there are multiple classes, and each document can belong to any of these categories making this a multi-label problem. <br/>
-	
+	<hr>
+<b>Reuters is a multi-class and multi-label dataset</b>, this means there are multiple classes, and each document can belong to any of these categories making this a multi-label problem. <br/>
+<hr>
 In the ApteMod corpus, each document belongs to one or more
-categories.  There are 90 categories in the corpus.  The average
+categories.  There are <b>90 categories</b> in the corpus.  The average
 number of categories per document is 1.235, and the average number of
 documents per category is about 148, or 1.37% of the corpus.<br/>
 </p>
