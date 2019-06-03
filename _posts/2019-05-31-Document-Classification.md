@@ -17,7 +17,7 @@
 <p> Document classification is an important problem in computer science, the task is to classify a document into one or more categories. Text documents classification is a classical problem in Natural langauge processing. We will be working with content based classification in this post. There are multiple application to document classification, some of them being spam-filtering, sentiment analysis, readability assessment. </p>
   
 <h1 id="Dataset">Dataset</h1>
-<p> We will be using the Reuters dataset for the scope of this blog, Reuters is a benchmark dataset for document classification.It consists of  <br />
+<p> We will be using the <b>Reuters</b> dataset for the scope of this blog, Reuters is a benchmark dataset for document classification.It consists of  <br />
 Reuters ApteMod is a collection of 10,788 documents from the Reuters financial
 newswire service, partitioned into a training set with 7769 documents
 and a test set with 3019 documents.  The total size of the corpus is
@@ -217,8 +217,8 @@ The results for the classification are as the follows, <br/>
 1) <b>Class D</b>: 1 True positive and 1 False positive <br/>
 We can see that, Pr(A)=Pr(C)=Pr(D)=0.5 and Pr(B)=0.1<br/>
 <hr>
-The <b>macro-average<b/> will be computed as <b>Pr_macro</b>=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
-The <b>micro-average<b/> will be computed as <b>Pr_micro</b>=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
+The <b>macro-average</b> is computed as <b>Pr_macro</b>=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
+The <b>micro-average</b> is computed as <b>Pr_micro</b>=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
 
 
 </p>
