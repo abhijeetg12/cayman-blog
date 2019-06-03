@@ -32,11 +32,14 @@ documents per category is about 148, or 1.37% of the corpus.<br/>
 </p>
 
 <h1 id="Tokenization and tf-idf">Data Preporcessing</h1>
-<p>The data in the reuters dataset consists of text files, which cannot be understood by the computer. There are multiple ways of representing the text data into numerical data, one of them is the tf-idf vectorization. Tf-idf stands for term frequency-inverse document frequency, and the tf-idf weight is a weight often used in information retrieval and text mining.<br/> This weight is a statistical measure used to evaluate how important a word is to a document in a collection or corpus. The importance increases proportionally to the number of times a word appears in the document but is offset by the frequency of the word in the corpus. 
+<p>
+The data in the reuters dataset consists of <b>text files</b>, which cannot be understood by the computer. There are multiple ways of representing the text data into numerical data, one of them is the <b>tf-idf vectorization</b>. Tf-idf stands for term frequency-inverse document frequency, and the tf-idf weight is a weight often used in information retrieval and text mining.<br/> 
+	<hr>
+This weight is a <b>statistical measure used to evaluate how important a word is to a document in a collection or corpus</b>. The importance increases proportionally to the number of times a word appears in the document but is offset by the frequency of the word in the corpus.<br/> 
 Variations of the tf-idf weighting scheme are often used by search engines as a central tool in scoring and ranking a document's relevance given a user query.<br/>
-
-But before we move on to using tf-idf, we need to tokenize the data. tokenization is the process of chopping up character sequences into pieces called tokens. I am using nltk(natural language tool-lit) word tokenizer. We will also be removing some unnecessary words called as stop words from out corpus. <br/>
-After the tokenization process is complete, we will TfidVectorizer from sklearn library for vectorization. <br/>
+<hr>
+But before we move on to using tf-idf, we need to tokenize the data. tokenization is the process of chopping up character sequences into pieces called tokens. In this particular problem statement we will use <b>nltk(natural language tool-lit) word tokenizer</b>. We will also be removing some unnecessary words called as stop words from out corpus. <br/>
+After the tokenization process is complete, we will <b>TfidVectorizer from sklearn library</b> for vectorization. <br/>
 Next up, the training and test tfidf vectors are saved in '.npy' file format for later use.
 </p>
 
