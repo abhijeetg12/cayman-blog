@@ -201,6 +201,7 @@ torch.save(net.state_dict(), 'bce_pytorch_model/bce_final.pth')
 <b>F1 Score</b> This category combines the precision and recall, as F1 score is the harmonic mean of the precision and the recall score.  <br/>
 
 But the evaluation in this case is being done in a multi-class and a multi-label environment, hence the evaluation metric become more complicated. 
+<hr>
 The below are the evaluation metrics for multi-class classification. <br/>
 
 <b>Micro-Average</b>,
@@ -208,12 +209,14 @@ The below are the evaluation metrics for multi-class classification. <br/>
 
 Let us look at an example at how these measures might work for a toy classification problem, <br/>
 Let us say we have a multi-class classification system with four classes, A, B, C, D.  And we are using precision as the preferred metric. <br/>
+<hr>
 The results for the classification are as the follows, <br/>
 1) <b>Class A</b>: 1 True positive and 1 False positive <br/>
 1) <b>Class B</b>: 10 True positive and 90 False positive <br/>
 1) <b>Class C</b>: 1 True positive and 1 False positive <br/>
 1) <b>Class D</b>: 1 True positive and 1 False positive <br/>
 We can see that, Pr(A)=Pr(C)=Pr(D)=0.5 and Pr(B)=0.1<br/>
+<hr>
 The <b>macro-average<b/> will be computed as <b>Pr_macro</b>=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
 The <b>micro-average<b/> will be computed as <b>Pr_micro</b>=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
 
