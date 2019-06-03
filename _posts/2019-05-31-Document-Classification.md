@@ -194,8 +194,17 @@ np.save('loss_train_bce.npy', loss_array)
 torch.save(net.state_dict(), 'bce_pytorch_model/bce_final.pth')
 </code></pre>
 
-<h1 id="Building the Neural Network">Building the Neural Network</h1>
-<p>The next part of the process is building a neural network, which
+<h1 id="Evaluation">Evaluation of the model</h1>
+<p>The main metrics for text classification are <b>precision, recall, F1 </b> </br>
+<b>Precision</b> indicates the number of documents correctly assigned to a particular category out of the total number of documents predicted </br>
+<b>Recall</b> indicates the number of documents correctly assigned to a particular category, out of the total number of documents in that category.  </br>
+<b>F1 Score</b> This category combines the precision and recall, as F1 score is the harmonic mean of the precision and the recall score.  </br>
+
+But the evaluation in this case is being done in a multi-class and a multi-label environment, hence the evaluation metric become more complicated. 
+The below are the evaluation metrics for multi-class classification. </br>
+
+<b>Micro-Average</b>,
+<b>Macro-Average</b> </br>
 </p>
   
 </html>
