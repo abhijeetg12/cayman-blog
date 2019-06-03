@@ -205,6 +205,19 @@ The below are the evaluation metrics for multi-class classification. <br/>
 
 <b>Micro-Average</b>,
 <b>Macro-Average</b> <br/>
+
+Let us look at an example at how these measures might work for a toy classification problem, <br/>
+Let us say we have a multi-class classification system with four classes, A, B, C, D.  And we are using precision as the preferred metric. <br/>
+The results for the classification are as the follows, <br/>
+1) Class A: 1 True positive and 1 False positive <br/>
+1) Class B: 10 True positive and 90 False positive <br/>
+1) Class C: 1 True positive and 1 False positive <br/>
+1) Class D: 1 True positive and 1 False positive <br/>
+We can see that, Pr(A)=Pr(C)=Pr(D)=0.5 and Pr(B)=0.1<br/>
+The macro-average will be computed as Pr=(0.5+0.1+0.5+0.5)/4=0.4, <br/>
+The micro-average will be computed as Pr=(1+10+1+1)/(2+100+1+1)=0.123 <br/>
+
+
 </p>
   
 </html>
