@@ -198,7 +198,8 @@ np.save('data_reuters.npy', y)
 <h1 id="Data Visualization">Data Visualization</h1>
 <p>
 We have reduced the number of dimensions of the original data from 20k to 30. But we cannot visualize dimensions more that 3 intuitively. Hence for the next part we will further reduce the 30 dimensions to 3 using t-SNE, which stands for t- Stochastic Neighbour embeddings. t-SNEs is a great tool for visualizing high dimensional data in lower dimensions. 
-<p><img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/imgs/K-Means_clustering.png?raw=true" alt="image" /><br />
+<hr>
+<img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/imgs/K-Means_clustering.png?raw=true" alt="image" /><br />
 </p>
 
 <h2 id="code">MLP Code</h2>
