@@ -44,7 +44,7 @@ After the tokenization process is complete, we will <b>TfidVectorizer from sklea
 
 
 
-<h1 id="Autoencoder for data compression">Data Preporcessing</h1>
+<h1 id="Autoencoder for data compression">Autoencoder for data compression</h1>
 <p>
 I have used pytorch for building this Auto-encoder model, which consists of 4 fully connected layers. <br/>
 The input to the model is the tf-idf vectors which is of the dimension 20682 per entry. <br/>
@@ -120,11 +120,6 @@ vectorised_train_documents = vectorizer.fit_transform(train_docs)
 vectorised_test_documents = vectorizer.transform(test_docs)
 
 train_docs=vectorised_train_documents.toarray()
-# train=np.load('data/vectorized_train.npy')
-# print ("Vectorized reuters has been loaded")
-# #train=vectorised_train_documents.toarray()
-
-# print (np.shape(train), 'is the shape of the TF-IDF vector')
 
 ################### Writing autoencoder model #############################
 input1=torch.from_numpy(train_docs)
@@ -200,19 +195,10 @@ print (np.shape(y))
 np.save('data_reuters.npy', y)
 </code></pre>
 
-<h1 id="Building the Neural Network">Building the Neural Network</h1>
+<h1 id="Data Visualization">Data Visualization</h1>
 <p>
-The next part of the process is building a neural network, which will use the numpy arrays we have saved in the previous code. The first part is to load the train_vectorized, test_vectorized arrays.   <br/>
-Then we define the dimensions for the network,<br/> 
-<b>The input dimension is 20682</b>, which is equal to the first dimension of the tfidf vectors and also the <b>dictionary size</b>. <br/>
-H1, H2 are the sizes for the hidden layers, which are both equal to 10,000. <b>The output layers is of size 90, which is equal to the number of classes</b> in the reuters dataset. <br/>
-<hr>
-Next, we build the Neural_Network class using <b>pytorch's nn.module function</b>. it consists of a forward function, which calculates the output after passing it though the 3 layers. The output is returned from the function. <br/>
-We also need to convert all the data in numpy format to torch tensors as this is the only acceptable data type for torch functions. 
-We then use a training loop where we use adam optimizer for training the model for around <b>200 epochs</b>. 
-You can use any tyoe of loss function, in this code I have used MSE loss for torchs.nn <br/>
-You can save the model for later evaluation. <br/>
-<hr>
+We have reduced the number of dimensions of the original data from 20k to 30. But we cannot visualize dimensions more that 3 intuitively. Hence for the next part we will further reduce the 30 dimensions to 3 using t-SNE, which stands for t- Stochastic Neighbour embeddings. t-SNEs is a great tool for visualizing high dimensional data in lower dimensions. 
+<p><img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/imgs/K-Means_clustering.png?raw=true" alt="image" /><br />
 </p>
 
 <h2 id="code">MLP Code</h2>
