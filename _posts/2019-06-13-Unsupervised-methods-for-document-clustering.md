@@ -62,8 +62,8 @@ I have also L1 regularaization along with the MSE loss, with a coefficient 0.001
 
 <h2 id="code">Data preprocessing</h2>
 <pre><code>
-
 import numpy as np 
+import pandas as pd 
 from os.path import expanduser
 from collections import defaultdict
 from nltk.corpus import reuters
@@ -72,54 +72,132 @@ from nltk.stem.porter import PorterStemmer
 import re
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+import torch 
+import torch.nn as nn
+from torch.autograd import Variable
+import torch.nn.functional as F 
+import torch.optim as optim
+
+import seaborn as sns
+from string import *
+
+from sklearn.datasets import fetch_mldata
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+# import pycuda.driver as cuda
+from nltk import word_tokenize
+from nltk.stem.porter import PorterStemmer
+from nltk.corpus import stopwords
+import re
  
-stop_words= stopwords.words('english')
-
-#Tokenization is the process of chopping something into pieces, called tokens 
-#this includes sometimes throwing away the punctuation   #Stanford NLP group 
+cachedStopWords = stopwords.words("english")
+stop_words=cachedStopWords
 def tokenize(text):
-	min_length =3 
+	min_length = 3
 	words = map(lambda word: word.lower(), word_tokenize(text))
-	words = [word for word in words if word not in stop_words]
-
-	tokens= (list(map(lambda token: PorterStemmer().stem(token), words)))
-	p= re.compile('[a-zA-Z]+')
-	filtered_tokens= list(filter(lambda token: p.match(token) and len(token)>=min_length, tokens))
-
+	words = [word for word in words if word not in cachedStopWords]
+	tokens = (list(map(lambda token: PorterStemmer().stem(token),
+	                               words)))
+	p = re.compile('[a-zA-Z]+');
+	filtered_tokens = list(filter (lambda token: p.match(token) and len(token) >= min_length,tokens))
 	return filtered_tokens
 
+cuda= torch.cuda.is_available()
 
-#def collection_stats(): 
-#List of documents
 documents=reuters.fileids()
-print ((str(len(documents))), 'documents')
-
-#train_docs=list(filter(lambda doc: doc.startwith('train')))
 train_docs_id = list(filter(lambda doc: doc.startswith("train"),documents))
-print len(train_docs_id), 'number of train documents'
-test_docs_id = list(filter(lambda doc: doc.startswith("test"), documents))
-print len(test_docs_id), 'number of test docs'
+test_docs_id = list(filter(lambda doc: doc.startswith("test"),documents))
+ 
+train_docs = [reuters.raw(doc_id) for doc_id in train_docs_id]
+test_docs = [reuters.raw(doc_id) for doc_id in test_docs_id]
 
-train_docs= [reuters.raw(doc_id) for doc_id in train_docs_id]
-test_docs= [reuters.raw(doc_id) for doc_id in test_docs_id]
-
-#Tokenization 
-vectorizer =TfidfVectorizer(stop_words=stop_words, tokenizer=tokenize)
+vectorizer = TfidfVectorizer(stop_words=stop_words,
+                             tokenizer=tokenize)
 vectorised_train_documents = vectorizer.fit_transform(train_docs)
 vectorised_test_documents = vectorizer.transform(test_docs)
 
-dictionary=vectorizer.get_feature_names()
-print (vectorised_train_documents)
+train_docs=vectorised_train_documents.toarray()
+# train=np.load('data/vectorized_train.npy')
+# print ("Vectorized reuters has been loaded")
+# #train=vectorised_train_documents.toarray()
+
+# print (np.shape(train), 'is the shape of the TF-IDF vector')
+
+################### Writing autoencoder model #############################
+input1=torch.from_numpy(train_docs)
+input1=input1.type(torch.float32)
+
+class Autoencoder(nn.Module): 
+	def __init__(self,):
+		super(Autoencoder, self).__init__()
+
+		self.fc1=nn.Linear(20682, 1000)
+		self.fc2=nn.Linear(1000,30)
+		self.fc3=nn.Linear(30,1000)
+		self.fc4=nn.Linear(1000,20682)
 
 
-nparray=vectorised_train_documents.toarray()
-nparray_test=vectorised_test_documents.toarray()
+	def forward(self,x):
+		print (type(x))
+		h1= F.sigmoid(self.fc1(x))
+		print (type(h1))
+		h2= F.sigmoid(self.fc2(h1))
+		h3= F.sigmoid(self.fc3(h2))
+		h4= F.sigmoid(self.fc4(h3))
 
-np.save('vectorized_train.npy',nparray)
-np.save('vectorized_test.npy', nparray_test)
-np.save('train_labels.npy', train_labels)
-np.save('test_labels.npy', test_docs_labels)
+		return h4, h2
 
+Encoder=Autoencoder()
+criterion=nn.MSELoss()
+optimizer=optim.Adam(Encoder.parameters(), lr=3e-4)
+
+print (list(Encoder.parameters()))
+n_epochs=100
+Losses=[]
+for epoch in range(n_epochs):
+	
+	target=input1.clone()
+	target.require_grad= False
+
+	output1, encoded=Encoder(input1)
+	
+	regularization_loss = 0
+	for param in Encoder.parameters():
+		regularization_loss += torch.sum(torch.abs(param))
+
+	loss=criterion(target, output1)+0.001*regularization_loss
+
+	loss.backward()
+	optimizer.step()
+
+	print (loss.item())
+	optimizer.zero_grad()
+	Losses.append(loss.item())
+
+x=range(len(Losses))
+plt.plot(x, Losses)
+plt.show()
+
+y=encoded.detach().numpy()
+print (np.shape(y))
+
+
+#y=np.std(np.mean(y, axis=0), axis=0, ddof=1)
+#print (y)
+y1=np.mean(y, axis=0)
+print (np.shape(y1))
+y=y-y1
+
+y2=np.std(y, axis=0, ddof=1)
+y=y/y2
+
+print (np.shape(y))
+
+
+np.save('data_reuters.npy', y)
 </code></pre>
 
 <h1 id="Building the Neural Network">Building the Neural Network</h1>
