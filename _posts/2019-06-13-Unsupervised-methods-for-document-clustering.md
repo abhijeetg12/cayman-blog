@@ -9,12 +9,12 @@
 </head>
 <body>
 <div id="header">
-<h1 class="title">Multi-Label Document Classification using Neural Networks</h1>
+<h1 class="title">Methods for document clustering, and visualization</h1>
 <h2 class="author">Abhijeet Ghawade</h2>
 <h3 class="date">March 2019</h3>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p> Document classification is an important problem in computer science, the task is to classify a document into one or more categories. Text documents classification is a classical problem in Natural langauge processing.<br/> We will be working with content based classification in this post. There are multiple application to document classification, some of them being spam-filtering, sentiment analysis, readability assessment. </p>
+<p> This is a blog in the continuation of the previous one, "Document classification", have a look for a better understanding.  </p>
   <hr>
 <h1 id="Dataset">Dataset</h1>
 <p> We will be using the <b>Reuters</b> dataset for the scope of this blog, Reuters is a benchmark dataset for document classification. <br/>
@@ -40,9 +40,23 @@ Variations of the tf-idf weighting scheme are often used by search engines as a 
 <hr>
 But before we move on to using tf-idf, we need to tokenize the data. tokenization is the process of chopping up character sequences into pieces called tokens. In this particular problem statement we will use <b>nltk(natural language tool-lit) word tokenizer</b>. We will also be removing some unnecessary words called as stop words from out corpus. <br/>
 After the tokenization process is complete, we will <b>TfidVectorizer from sklearn library</b> for vectorization. <br/>
-Next up, the training and test tfidf vectors are saved in '.npy' file format for later use.
 </p>
 
+
+
+<h1 id="Autoencoder for data compression">Data Preporcessing</h1>
+<p>
+I have used pytorch for building this Auto-encoder model, which consists of 4 fully connected layers. <br/>
+The input to the model is the tf-idf vectors which is of the dimension 20682 per entry. <br/>
+	<hr>
+The first layer takes in the 20682 dimensional array, and the ouput is 1000 neurons. These 1000 neurons are connected to 30 neurons, which is the expected compression output. The 30 neurons are then connected to 1000 neurons, and these are connected to 20682 neurons in the final layer. <br/>
+<hr>
+I have used <b>sigmoid</b> as the activation function for all the layers. The final loss to be minimised is the mean squared error between the first and the final layer. The optimization algorithm used for training is the Adam Optimizer, with an initial learning rate of 3e-4. </br> 
+<hr>
+I have also L1 regularaization along with the MSE loss, with a coefficient 0.001. </br> 
+
+
+</p>
 
 
 
