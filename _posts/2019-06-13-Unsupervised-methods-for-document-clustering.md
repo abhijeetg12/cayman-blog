@@ -51,9 +51,9 @@ The input to the model is the tf-idf vectors which is of the dimension 20682 per
 	<hr>
 The first layer takes in the 20682 dimensional array, and the ouput is 1000 neurons. These 1000 neurons are connected to 30 neurons, which is the expected compression output. The 30 neurons are then connected to 1000 neurons, and these are connected to 20682 neurons in the final layer. <br/>
 <hr>
-I have used <b>sigmoid</b> as the activation function for all the layers. The final loss to be minimised is the mean squared error between the first and the final layer. The optimization algorithm used for training is the Adam Optimizer, with an initial learning rate of 3e-4. </br> 
+I have used <b>sigmoid</b> as the activation function for all the layers. The final loss to be minimised is the mean squared error between the first and the final layer. The optimization algorithm used for training is the Adam Optimizer, with an initial learning rate of 3e-4. <br/ 
 <hr>
-I have also L1 regularaization along with the MSE loss, with a coefficient 0.001. </br> 
+The loss function also has a regularaization term along with the MSE loss, with a coefficient 0.001. <br/> 
 
 
 </p>
@@ -197,9 +197,18 @@ np.save('data_reuters.npy', y)
 
 <h1 id="Data Visualization">Data Visualization</h1>
 <p>
-We have reduced the number of dimensions of the original data from 20k to 30. But we cannot visualize dimensions more that 3 intuitively. Hence for the next part we will further reduce the 30 dimensions to 3 using t-SNE, which stands for t- Stochastic Neighbour embeddings. t-SNEs is a great tool for visualizing high dimensional data in lower dimensions. 
+We have reduced the number of dimensions of the original data from 20k to 30. But we cannot visualize dimensions more that 3 intuitively. Hence for the next part we will further reduce the 30 dimensions to 3 using PCA first. This will let us analyse the data along the dimensions with maximum variance. But PCA is a linear transformatino of data, and we only visualize the dominant axes in the data. Hence the data may not look as separated into clusters as one would expect.<br/>
+<hr> 
+There is an interesting solution for that in form of t-SNE, which stands for t-Stochastic Neighbour embeddings. t-SNEs is a great tool for visualizing high dimensional data in lower dimensions. It is a nonlinear dimensionality reduction technique well-suited for embedding high-dimensional data for visualization in a low-dimensional space of two or three dimensions. <br/>
+We shall be visualising the data from both PCA and t-SNE in 3 dimensions for the reuters dataset.  <br/>
+
+After this data is converted to 3-dimensions, we can visualise the clusters that are being formed on the orignial data using multiple suitable methods. In this post I am going to be dealing with two clustering algorithms, which are <br/>
+<b>K-Means clustering</b> <br/>
+<b>Agglomerative clustering</b></br>
 <hr>
+<img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/imgs/clusters_from_autoencoder.png?raw=true" alt="image" /><br />
 <img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/imgs/K-Means_clustering.png?raw=true" alt="image" /><br />
+<img src="https://github.com/abhijeetg12/cayman-blog/blob/gh-pages/_posts/imgs/AgglomerativeClustering.png" alt="image" /><br />
 </p>
 
 <h2 id="code">MLP Code</h2>
